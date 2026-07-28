@@ -1,1 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>农产品增值税进项税额核定扣除：政策、案例、申报、会计与稽查</title>
+<style>
+:root{
+  --nav:#053322; --nav2:#0f5132; --green:#16a34a; --green2:#22c55e;
+  --mint:#dcfce7; --mint2:#f0fdf4; --paper:#ffffff; --bg:#edf8ef;
+  --ink:#102a1d; --muted:#5b7565; --line:#b7d7c1; --warn:#fff7ed;
+  --danger:#fef2f2; --yellow:#fffbeb; --blue:#eff6ff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(135deg,#ecfdf5 0%,#fbfffc 48%,#e7f6eb 100%);
+}
+.layout{display:grid;grid-template-columns:320px 1fr;min-height:100vh}
+nav{
+  position:sticky;top:0;height:100vh;overflow:auto;
+  background:linear-gradient(180deg,var(--nav),var(--nav2));
+  color:#fff;padding:24px 18px;
+}
+.brand{font-size:21px;font-weight:900;line-height:1.25}
+.brand small{display:block;margin-top:8px;font-size:12px;font-weight:400;opacity:.8}
+.nav-title{margin:22px 0 8px;font-size:12px;letter-spacing:.1em;opacity:.72}
+nav a{
+  display:block;color:#eaffef;text-decoration:none;
+  padding:9px 11px;border-radius:10px;margin:3px 0;
+  font-size:13.5px;border:1px solid transparent;
+}
+nav a:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2)}
+.nav-note{margin-top:18px;padding:12px;border-radius:14px;background:rgba(255,255,255,.09);font-size:12px;line-height:1.65}
+main{padding:28px 34px 64px;max-width:1480px}
+.slide{
+  min-height:720px;margin:0 0 28px;padding:44px 50px;
+  background:rgba(255,255,255,.95);border:1px solid #d6eadb;border-radius:28px;
+  box-shadow:0 24px 50px rgba(15,83,45,.10);
+  position:relative;overflow:hidden;
+}
+.slide:before{
+  content:"";position:absolute;right:-130px;top:-130px;width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle,#bbf7d0 0%,rgba(187,247,208,.1) 62%,transparent 72%);
+}
+.slide:after{
+  content:"";position:absolute;left:-140px;bottom:-150px;width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle,#dcfce7 0%,rgba(220,252,231,.22) 62%,transparent 72%);
+}
+.content{position:relative;z-index:1}
+.footer{position:absolute;right:30px;bottom:18px;color:#6b806f;font-size:12px;z-index:2}
+.kicker{color:var(--green);font-weight:900;letter-spacing:.1em;font-size:13px;margin-bottom:10px}
+h1{font-size:46px;line-height:1.12;margin:0 0 20px}
+h2{font-size:32px;line-height:1.22;margin:0 0 22px}
+h3{font-size:22px;margin:0 0 12px}
+p{font-size:17px;line-height:1.72;margin:8px 0;color:#244234}
+.big{font-size:23px;line-height:1.68}
+.small{font-size:12px;color:var(--muted);line-height:1.6}
+.grid{display:grid;gap:17px}
+.grid-2{grid-template-columns:1fr 1fr}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;align-items:start}
+.card{
+  background:linear-gradient(180deg,#fff,#f7fff9);
+  border:1px solid var(--line);border-radius:20px;padding:18px;
+  box-shadow:0 8px 22px rgba(15,83,45,.06);
+}
+.card strong{color:#0f5132}
+.badge{display:inline-block;background:var(--mint);color:#166534;padding:6px 10px;border-radius:999px;font-size:13px;font-weight:800;margin:3px 4px 3px 0}
+.formula{background:#f0fdf4;border:1px solid #86efac;border-left:6px solid var(--green);padding:14px 16px;border-radius:14px;font-size:18px;line-height:1.65;margin:13px 0}
+.callout{background:#ecfdf5;border:1px solid #86efac;border-radius:18px;padding:16px;font-size:16px;line-height:1.7}
+.warn{background:var(--warn);border-color:#fdba74}
+.danger{background:var(--danger);border-color:#fecaca;color:#7f1d1d}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border-radius:14px;overflow:hidden;margin:12px 0}
+th,td{border:1px solid var(--line);padding:8px 9px;text-align:center;vertical-align:middle}
+th{background:#dcfce7;color:#14532d;font-weight:900}
+.subhead td{background:#f0fdf4;font-weight:900;color:#14532d}
+td.left,th.left{text-align:left}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.fill{background:#fffbeb}
+.key{background:#ecfdf5;font-weight:800}
+tr.total td{background:#f0fdf4;font-weight:900}
+.flow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:16px}
+.flow span{background:#dcfce7;border:1px solid #86efac;border-radius:12px;padding:10px 13px;font-weight:800}
+.flow .arrow{background:transparent;border:0;color:#15803d}
+.cols{columns:2;column-gap:28px}
+.cols li{break-inside:avoid;margin:7px 0;font-size:15px;line-height:1.55}
+.wide table{font-size:12px}.wide th,.wide td{padding:6px 6px}
+.toolbar{position:fixed;right:18px;bottom:18px;z-index:20;display:flex;gap:8px}
+.toolbar button{border:0;background:#14532d;color:white;border-radius:999px;padding:10px 14px;box-shadow:0 8px 22px rgba(0,0,0,.2);cursor:pointer}
+@media(max-width:980px){
+  .layout{grid-template-columns:1fr}nav{position:relative;height:auto}
+  main{padding:18px}.slide{padding:30px 20px;min-height:auto}
+  .grid-2,.grid-3,.grid-4,.two-col{grid-template-columns:1fr}
+  h1{font-size:34px}h2{font-size:27px}.cols{columns:1}
+}
+@media print{
+  body{background:#fff}.layout{display:block}nav,.toolbar{display:none}
+  .slide{box-shadow:none;border-radius:0;border:0;min-height:190mm;page-break-after:always;margin:0;padding:12mm}
+  .slide:before,.slide:after{display:none}
+  @page{size:A4 landscape;margin:0}
+}
+</style>
+</head>
+<body>
+<div class="toolbar"><button onclick="window.print()">打印 / 另存PDF</button><button onclick="location.hash='cover'">回首页</button></div>
+<div class="layout">
+<nav>
+  <div class="brand">农产品核定扣除<br>综合案例
+    <small>政策依据｜三种方法｜复杂案例｜申报表全貌｜会计核算｜稽查方向</small>
+  </div>
+
+  <div class="nav-title">一、政策框架</div>
+  <a href="#cover">01 封面</a>
+  <a href="#roadmap">02 学习路线</a>
+  <a href="#policy">03 政策依据</a>
+  <a href="#scope">04 适用范围</a>
+  <a href="#methods">05 三种核定方法</a>
+  <a href="#rate">06 扣除率与发票</a>
+
+  <div class="nav-title">二、投入产出法案例</div>
+  <a href="#case">07 案例业务全貌</a>
+  <a href="#purchase">08 采购与均价</a>
+  <a href="#sales">09 销售数量分拆</a>
+  <a href="#io">10 投入产出法计算</a>
+  <a href="#direct">11 直接销售计算</a>
+  <a href="#summary">12 核定扣除汇总</a>
+
+  <div class="nav-title">三、成本法与参照法</div>
+  <a href="#cost-method">13 成本法案例</a>
+  <a href="#cost-adjust">14 成本法年终调整</a>
+  <a href="#reference-rate">15 参照耗用率案例</a>
+  <a href="#reference-unit">16 参照单耗案例</a>
+  <a href="#method-compare">17 方法对比</a>
+
+  <div class="nav-title">四、申报表全貌</div>
+  <a href="#flow">18 申报链条</a>
+  <a href="#schedule1">19 附表一全貌</a>
+  <a href="#schedule2">20 附表二全貌</a>
+  <a href="#main1">21 主表上半</a>
+  <a href="#main2">22 主表下半</a>
+  <a href="#surtax">23 附加税费</a>
+
+  <div class="nav-title">五、会计与稽查</div>
+  <a href="#accounting">24 会计核算处理</a>
+  <a href="#ledger">25 税会差异台账</a>
+  <a href="#audit">26 稽查关注方向</a>
+  <a href="#docs">27 资料清单</a>
+  <a href="#sources">28 政策来源</a>
+
+  <div class="nav-note">可直接浏览演示，也可打印为PDF。案例数据来自前述苹果加工、竹木制品成本法、香菇调味品参照法和蓝莓浓缩汁参照单耗示例。</div>
+</nav>
+
+<main>
+<section class="slide" id="cover"><div class="content">
+  <div class="kicker">AGRICULTURAL VAT INPUT DEDUCTION</div>
+  <h1>农产品增值税进项税额<br>核定扣除综合实务</h1>
+  <p class="big">一份讲清：政策依据、投入产出法、成本法、参照法、申报表全貌、会计核算、税会差异与税务稽查关注方向。</p>
+  <div class="flow"><span>政策</span><span class="arrow">→</span><span>计算</span><span class="arrow">→</span><span>申报</span><span class="arrow">→</span><span>会计</span><span class="arrow">→</span><span>风控</span></div>
+</div><div class="footer">绿色系培训版｜HTML网页PPT</div></section>
+
+<section class="slide" id="roadmap"><div class="content">
+  <div class="kicker">01 / ROADMAP</div><h2>学习路线：先分清口径，再落到表和账</h2>
+  <div class="grid grid-4">
+    <div class="card"><h3>政策适用</h3><p>是否属于试点范围，是否取得或适用税务机关核定标准。</p></div>
+    <div class="card"><h3>核定方法</h3><p>投入产出法、成本法、参照法，解决不同生产管理场景。</p></div>
+    <div class="card"><h3>申报落点</h3><p>核定扣除结果进入附表二第6栏税额，再汇入主表第12栏。</p></div>
+    <div class="card"><h3>账务与风控</h3><p>采购、生产、销售、分录、台账和检查资料要闭环。</p></div>
+  </div>
+  <div class="callout">核定扣除不是“取得多少农产品发票就抵多少”，而是按税务核定规则计算“当期允许抵扣进项税额”。</div>
+</div></section>
+
+<section class="slide" id="policy"><div class="content">
+  <div class="kicker">02 / POLICY BASIS</div><h2>政策依据：核定扣除的三层结构</h2>
+  <div class="grid grid-3">
+    <div class="card"><span class="badge">国家试点</span><h3>财税〔2012〕38号</h3><p>确立农产品进项税额核定扣除试点，规定投入产出法、成本法、参照法及调整规则。</p></div>
+    <div class="card"><span class="badge">地方扩围</span><h3>财税〔2013〕57号</h3><p>允许省级财政、税务部门结合本地特点，将部分行业纳入核定扣除试点。</p></div>
+    <div class="card"><span class="badge">申报表</span><h3>填表说明</h3><p>明确核定扣除企业在附表二第6栏填列当期允许抵扣税额，不填份数和金额。</p></div>
+  </div>
+  <p class="small">正式适用时，应同步查看所在地行业目录、核定标准、备案要求和电子税务局当前表单。</p>
+</div></section>
+
+<section class="slide" id="scope"><div class="content">
+  <div class="kicker">03 / SCOPE</div><h2>适用范围：不是所有涉农企业都能核定扣除</h2>
+  <div class="two-col">
+    <div>
+      <h3>通常需要同时具备</h3>
+      <ul class="cols">
+        <li>纳税人为增值税一般纳税人。</li>
+        <li>购进农产品用于生产销售货物，或购进农产品直接销售。</li>
+        <li>所属行业、产品或业务已纳入核定扣除试点。</li>
+        <li>有主管税务机关核定的单耗、耗用率、损耗率或参照标准。</li>
+        <li>能准确区分自产加工、外购成品、半成品、直接销售业务。</li>
+        <li>能建立采购、库存、生产、销售、申报和会计台账。</li>
+      </ul>
+    </div>
+    <div class="callout warn"><strong>判断误区：</strong><br>企业名称带“农业”、销售农产品、取得农产品发票，都不当然等于可以核定扣除。是否适用，关键看试点范围和核定标准。</div>
+  </div>
+</div></section>
+
+<section class="slide" id="methods"><div class="content">
+  <div class="kicker">04 / METHODS</div><h2>三种方法：按企业生产管理特点选择</h2>
+  <table>
+    <thead><tr><th>方法</th><th class="left">核心逻辑</th><th class="left">适用场景</th><th class="left">关键公式</th></tr></thead>
+    <tbody>
+      <tr><td>投入产出法</td><td class="left">用销售数量和核定单耗倒推农产品耗用。</td><td class="left">产品单一或单耗稳定。</td><td class="left">销售数量×单耗×均价×扣除率÷（1＋扣除率）</td></tr>
+      <tr><td>成本法</td><td class="left">用主营业务成本和农产品耗用率计算抵扣。</td><td class="left">产品多、规格复杂，难以逐项确定单耗。</td><td class="left">主营业务成本×耗用率×扣除率÷（1＋扣除率）</td></tr>
+      <tr><td>参照法</td><td class="left">新办或新增产品先参照可比企业或行业标准。</td><td class="left">无自身完整历史数据。</td><td class="left">参照单耗或参照耗用率，次年按实际重核调整。</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section class="slide" id="rate"><div class="content">
+  <div class="kicker">05 / RATE & INVOICE</div><h2>扣除率与发票：核定扣除的高频误区</h2>
+  <div class="grid grid-2">
+    <div class="card"><h3>扣除率</h3><p>核定扣除口径下，扣除率通常按销售货物适用税率确定。生产销售13%税率产品按13%计算；直接销售9%税率农产品按9%计算。</p></div>
+    <div class="card"><h3>发票</h3><p>农产品发票仍要取得和保存，用来证明采购真实、数量、买价和均价；但核定范围内的农产品不再按发票金额重复抵扣。</p></div>
+  </div>
+  <div class="callout danger">风险提示：同一批农产品不能既按专票或收购发票抵扣，又按核定扣除结果填入附表二第6栏。</div>
+</div></section>
+
+<section class="slide" id="case"><div class="content">
+  <div class="kicker">06 / INPUT-OUTPUT CASE</div><h2>案例业务全貌：苹果加工企业甲公司</h2>
+  <table>
+    <thead><tr><th>类别</th><th>业务项目</th><th>数量/金额</th><th>税率/标准</th><th class="left">说明</th></tr></thead>
+    <tbody>
+      <tr><td>采购</td><td>期初鲜苹果</td><td class="num">500吨 / 1,500,000.00元</td><td>—</td><td class="left">参与平均购买单价计算。</td></tr>
+      <tr><td>采购</td><td>本期购进鲜苹果</td><td class="num">2,400吨 / 7,950,000.00元</td><td>—</td><td class="left">第二批原购进1,000吨，退货100吨后净额900吨。</td></tr>
+      <tr><td>加工销售</td><td>苹果浓缩汁</td><td class="num">165吨</td><td>13%；单耗7.5</td><td class="left">账面销售180吨，其中外购浓缩汁15吨剔除。</td></tr>
+      <tr><td>加工销售</td><td>苹果果泥</td><td class="num">260吨</td><td>13%；单耗1.4</td><td class="left">全部为自产加工产品。</td></tr>
+      <tr><td>直接销售</td><td>鲜苹果</td><td class="num">120吨</td><td>9%；损耗率2%</td><td class="left">按直接销售法反推对应购进数量。</td></tr>
+    </tbody>
+  </table>
+  <div class="grid grid-3" style="margin-top:18px">
+    <div class="card"><h3>业务主线</h3><p>既有“购进鲜苹果→加工→销售”的生产链条，也有“购进鲜苹果→直接销售”的流通链条。</p></div>
+    <div class="card"><h3>核定关键</h3><p>加工产品按销售数量和单耗倒推；直接销售按销售数量和损耗率倒推。</p></div>
+    <div class="card"><h3>数据分拆</h3><p>外购浓缩汁虽形成收入，但不是本企业耗用鲜苹果加工形成，必须剔除。</p></div>
+  </div>
+</div></section>
+
+<section class="slide" id="purchase"><div class="content">
+  <div class="kicker">07 / PURCHASE PRICE</div><h2>采购与均价：确定鲜苹果平均购买单价</h2>
+  <table>
+    <thead><tr><th>项目</th><th>数量（吨）</th><th>含税单价</th><th>买价</th><th class="left">处理口径</th></tr></thead>
+    <tbody>
+      <tr><td>期初库存</td><td class="num">500.00</td><td class="num">3,000.00</td><td class="num">1,500,000.00</td><td class="left">参与加权平均</td></tr>
+      <tr><td>第一批购进</td><td class="num">1,500.00</td><td class="num">3,200.00</td><td class="num">4,800,000.00</td><td class="left">参与加权平均</td></tr>
+      <tr><td>第二批购进净额</td><td class="num">900.00</td><td class="num">3,500.00</td><td class="num">3,150,000.00</td><td class="left">原1,000吨，退货100吨</td></tr>
+      <tr class="total"><td>合计</td><td class="num">2,900.00</td><td>—</td><td class="num">9,450,000.00</td><td class="left">平均购买单价＝3,258.6207</td></tr>
+    </tbody>
+  </table>
+  <div class="formula">平均购买单价＝9,450,000.00÷2,900.00＝3,258.6207元/吨</div>
+</div></section>
+
+<section class="slide" id="sales"><div class="content">
+  <div class="kicker">08 / SALES SPLIT</div><h2>销售数量分拆：先剔除不能核定的销售</h2>
+  <table>
+    <thead><tr><th>项目</th><th>账面销售数量</th><th>剔除数量</th><th>纳入核定数量</th><th>单耗/损耗率</th><th class="left">理由</th></tr></thead>
+    <tbody>
+      <tr><td>苹果浓缩汁</td><td class="num">180吨</td><td class="num">15吨</td><td class="num key">165吨</td><td>7.5</td><td class="left">15吨为外购半成品分装销售。</td></tr>
+      <tr><td>苹果果泥</td><td class="num">260吨</td><td class="num">0</td><td class="num key">260吨</td><td>1.4</td><td class="left">全部自产加工。</td></tr>
+      <tr><td>鲜苹果直接销售</td><td class="num">120吨</td><td class="num">0</td><td class="num key">120吨</td><td>2%</td><td class="left">直接销售，考虑核定损耗率。</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section class="slide" id="io"><div class="content">
+  <div class="kicker">09 / INPUT-OUTPUT CALCULATION</div><h2>投入产出法：加工产品抵扣计算</h2>
+  <table>
+    <thead><tr><th>产品</th><th>销售数量</th><th>单耗</th><th>核定耗用数量</th><th>平均购买单价</th><th>扣除率</th><th>允许抵扣额</th></tr></thead>
+    <tbody>
+      <tr><td>苹果浓缩汁</td><td class="num">165.00</td><td class="num">7.5000</td><td class="num">1,237.5000</td><td class="num">3,258.6207</td><td>13%</td><td class="num">463,920.89</td></tr>
+      <tr><td>苹果果泥</td><td class="num">260.00</td><td class="num">1.4000</td><td class="num">364.0000</td><td class="num">3,258.6207</td><td>13%</td><td class="num">136,458.35</td></tr>
+      <tr class="total"><td colspan="3">合计</td><td class="num">1,601.5000</td><td>—</td><td>—</td><td class="num">600,379.24</td></tr>
+    </tbody>
+  </table>
+  <div class="formula">苹果浓缩汁：165×7.5×3,258.6207×13%÷1.13＝463,920.89</div>
+  <div class="formula">苹果果泥：260×1.4×3,258.6207×13%÷1.13＝136,458.35</div>
+</div></section>
+
+<section class="slide" id="direct"><div class="content">
+  <div class="kicker">10 / DIRECT SALE</div><h2>直接销售鲜苹果：按损耗率反推购进量</h2>
+  <table>
+    <thead><tr><th>农产品</th><th>销售数量</th><th>损耗率</th><th>对应购进数量</th><th>平均购买单价</th><th>扣除率</th><th>允许抵扣额</th></tr></thead>
+    <tbody>
+      <tr><td>鲜苹果</td><td class="num">120.00</td><td>2%</td><td class="num">122.44898</td><td class="num">3,258.6207</td><td>9%</td><td class="num">32,946.17</td></tr>
+    </tbody>
+  </table>
+  <div class="formula">对应购进数量＝120÷（1－2%）＝122.44898吨</div>
+  <div class="formula">允许抵扣额＝122.44898×3,258.6207×9%÷1.09＝32,946.17元</div>
+</div></section>
+
+<section class="slide" id="summary"><div class="content">
+  <div class="kicker">11 / SUMMARY</div><h2>核定扣除汇总：进入申报表的最终数</h2>
+  <div class="two-col">
+    <table>
+      <thead><tr><th>核定方法</th><th>允许抵扣进项税额</th></tr></thead>
+      <tbody>
+        <tr><td class="left">投入产出法</td><td class="num">600,379.24</td></tr>
+        <tr><td class="left">成本法</td><td class="num">0.00</td></tr>
+        <tr><td class="left">购进农产品直接销售</td><td class="num">32,946.17</td></tr>
+        <tr><td class="left">用于生产经营且不构成货物实体</td><td class="num">0.00</td></tr>
+        <tr class="total"><td class="left">合计</td><td class="num">633,325.41</td></tr>
+      </tbody>
+    </table>
+    <div class="card">
+      <h3>数量台账口径</h3>
+      <p>加工核定耗用：1,601.50吨；直接销售对应购进量：122.44898吨；合计对应数量：1,723.94898吨。</p>
+      <p>该数量是税务核定口径，不完全等于会计实际领料、在产品、产成品库存。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="slide" id="cost-method"><div class="content">
+  <div class="kicker">12 / COST METHOD</div><h2>成本法案例：竹木制品企业乙公司</h2>
+  <p>乙公司产品品种多、规格复杂，难以按产品逐项确定单耗，经主管税务机关核定采用成本法。</p>
+  <div class="grid grid-2">
+    <table>
+      <thead><tr><th>上年度生产成本项目</th><th>金额</th></tr></thead>
+      <tbody>
+        <tr><td class="left">外购竹材、原木含税金额</td><td class="num">18,000,000.00</td></tr>
+        <tr><td class="left">非农产品辅助材料</td><td class="num">4,500,000.00</td></tr>
+        <tr><td class="left">直接人工</td><td class="num">3,000,000.00</td></tr>
+        <tr><td class="left">制造费用</td><td class="num">4,500,000.00</td></tr>
+        <tr class="total"><td class="left">生产成本合计</td><td class="num">30,000,000.00</td></tr>
+      </tbody>
+    </table>
+    <div>
+      <div class="formula">农产品耗用率＝18,000,000÷30,000,000＝60%</div>
+      <table>
+        <thead><tr><th>本月项目</th><th>金额/比例</th></tr></thead>
+        <tbody>
+          <tr><td>主营业务成本</td><td class="num">8,000,000.00</td></tr>
+          <tr><td>农产品耗用率</td><td>60%</td></tr>
+          <tr><td>扣除率</td><td>13%</td></tr>
+          <tr class="total"><td>允许抵扣额</td><td class="num">552,212.39</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="formula">8,000,000×60%×13%÷1.13＝552,212.39元</div>
+</div></section>
+
+<section class="slide" id="cost-adjust"><div class="content">
+  <div class="kicker">13 / COST METHOD ADJUSTMENT</div><h2>成本法年终调整：按实际耗用率重新核定</h2>
+  <div class="two-col">
+    <table>
+      <thead><tr><th>年度实际项目</th><th>金额</th></tr></thead>
+      <tbody>
+        <tr><td class="left">实际投入生产农产品外购金额</td><td class="num">21,000,000.00</td></tr>
+        <tr><td class="left">实际生产成本</td><td class="num">30,000,000.00</td></tr>
+        <tr class="total"><td class="left">实际耗用率</td><td class="num">70%</td></tr>
+      </tbody>
+    </table>
+    <div class="card"><h3>调整逻辑</h3><p>原核定耗用率为60%，年度实际重核为70%。如果全年均按60%抵扣，则抵扣偏低；如果实际低于原核定比例，则需要作进项税额转出。</p></div>
+  </div>
+  <div class="callout">成本法不能一用多年不调整。年度终了，应根据企业实际生产成本结构重新核定耗用率，并按规定处理差额。</div>
+</div></section>
+
+<section class="slide" id="reference-rate"><div class="content">
+  <div class="kicker">14 / REFERENCE METHOD</div><h2>参照法案例一：参照耗用率</h2>
+  <p>丙公司为新办香菇调味制品企业，无上年度完整数据。主管税务机关参考两家可比企业，暂核定农产品耗用率55%。</p>
+  <table>
+    <thead><tr><th>参照企业</th><th>核定农产品耗用率</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>A企业</td><td>54%</td><td>生产工艺接近</td></tr>
+      <tr><td>B企业</td><td>56%</td><td>产品结构接近</td></tr>
+      <tr class="total"><td>丙公司暂定</td><td>55%</td><td>首年参照适用</td></tr>
+    </tbody>
+  </table>
+  <div class="formula">本月允许抵扣额＝主营业务成本3,000,000×55%×13%÷1.13＝189,823.01元</div>
+  <div class="formula">次年实际耗用率48%时，重新计算＝3,000,000×48%×13%÷1.13＝165,663.72元；多抵扣24,159.29元需转出。</div>
+</div></section>
+
+<section class="slide" id="reference-unit"><div class="content">
+  <div class="kicker">15 / REFERENCE UNIT CONSUMPTION</div><h2>参照法案例二：参照单耗</h2>
+  <p>丁公司新生产蓝莓浓缩汁，主管税务机关同意首年参照相近企业单耗：每销售1吨蓝莓浓缩汁耗用蓝莓6吨。</p>
+  <table>
+    <thead><tr><th>项目</th><th>数据</th></tr></thead>
+    <tbody>
+      <tr><td>销售蓝莓浓缩汁</td><td class="num">100吨</td></tr>
+      <tr><td>参照单耗</td><td class="num">6吨蓝莓/吨产品</td></tr>
+      <tr><td>平均购买单价</td><td class="num">8,000元/吨</td></tr>
+      <tr><td>扣除率</td><td>13%</td></tr>
+      <tr class="total"><td>暂时允许抵扣额</td><td class="num">552,212.39元</td></tr>
+    </tbody>
+  </table>
+  <div class="formula">100×6×8,000×13%÷1.13＝552,212.39元</div>
+  <div class="callout warn">虽然叫参照法，但参照的是“单耗”时，实际计算过程仍类似投入产出法；次年按自身实际单耗重新核定并调整。</div>
+</div></section>
+
+<section class="slide" id="method-compare"><div class="content">
+  <div class="kicker">16 / METHOD COMPARISON</div><h2>三种方法对比：选错方法会直接影响抵扣额</h2>
+  <table>
+    <thead><tr><th>项目</th><th>投入产出法</th><th>成本法</th><th>参照法</th></tr></thead>
+    <tbody>
+      <tr><td>主要依据</td><td>销售数量和核定单耗</td><td>主营业务成本和耗用率</td><td>同行业或相近企业标准</td></tr>
+      <tr><td>适合情形</td><td>产品单耗容易确定</td><td>产品多、结构复杂</td><td>新办企业或新增产品</td></tr>
+      <tr><td>采购金额直接决定抵扣吗</td><td>否</td><td>否</td><td>否</td></tr>
+      <tr><td>年终调整</td><td>视核定变化</td><td>通常需要重核</td><td>次年必须结合自身数据重核</td></tr>
+      <tr><td>主要风险</td><td>单耗虚高、销售数量虚增</td><td>主营业务成本或耗用率虚高</td><td>选择不可比企业、参照标准不合理</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section class="slide" id="flow"><div class="content">
+  <div class="kicker">17 / DECLARATION FLOW</div><h2>申报链条：从核定计算到主表</h2>
+  <div class="flow"><span>明细计算表</span><span class="arrow">→</span><span>核定扣除汇总表</span><span class="arrow">→</span><span>附表二第6栏</span><span class="arrow">→</span><span>附表二第12栏</span><span class="arrow">→</span><span>主表第12栏</span><span class="arrow">→</span><span>应纳税额</span></div>
+  <div class="grid grid-3" style="margin-top:24px">
+    <div class="card"><h3>附表一</h3><p>展示销售额、税率和销项税额，苹果案例销项税额964,000.00元。</p></div>
+    <div class="card"><h3>附表二</h3><p>展示进项构成，核定扣除额633,325.41元填第6栏税额。</p></div>
+    <div class="card"><h3>主表</h3><p>综合销项、进项、留抵、转出后，应纳税额102,274.59元。</p></div>
+  </div>
+</div></section>
+
+<section class="slide wide" id="schedule1"><div class="content">
+  <div class="kicker">18 / SCHEDULE I</div><h2>附列资料（一）：本期销售情况明细全貌示意</h2>
+  <table>
+    <thead><tr><th>行次</th><th class="left">项目</th><th>税率</th><th>专票销售额</th><th>其他发票销售额</th><th>未开票销售额</th><th>销售额合计</th><th>销项税额</th><th class="left">说明</th></tr></thead>
+    <tbody>
+      <tr class="subhead"><td colspan="9">一、一般计税方法计税项目</td></tr>
+      <tr><td>1</td><td class="left">13%税率货物</td><td>13%</td><td class="num fill">5,600,000.00</td><td class="num fill">1,400,000.00</td><td class="num">0.00</td><td class="num key">7,000,000.00</td><td class="num key">910,000.00</td><td class="left">浓缩汁＋果泥</td></tr>
+      <tr><td>3</td><td class="left">9%税率货物</td><td>9%</td><td class="num fill">600,000.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num key">600,000.00</td><td class="num key">54,000.00</td><td class="left">外购鲜苹果直接销售</td></tr>
+      <tr><td>5</td><td class="left">6%税率服务</td><td>6%</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td></td></tr>
+      <tr class="total"><td>小计</td><td class="left">一般计税销售额</td><td>—</td><td class="num">6,200,000.00</td><td class="num">1,400,000.00</td><td class="num">0.00</td><td class="num">7,600,000.00</td><td class="num">964,000.00</td><td>带入主表</td></tr>
+      <tr class="subhead"><td colspan="9">二、简易计税、免税、出口等项目</td></tr>
+      <tr><td>8-13b</td><td class="left">简易计税项目</td><td>各征收率</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td></td></tr>
+      <tr><td>16-17</td><td class="left">免抵退出口销售额</td><td>—</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">—</td><td></td></tr>
+      <tr><td>18-19</td><td class="left">免税销售额</td><td>—</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">—</td><td></td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section class="slide wide" id="schedule2"><div class="content">
+  <div class="kicker">19 / SCHEDULE II</div><h2>附列资料（二）：本期进项税额明细全貌示意</h2>
+  <table>
+    <thead><tr><th>栏次</th><th class="left">项目</th><th>份数</th><th>金额</th><th>税额</th><th class="left">本案例填列说明</th></tr></thead>
+    <tbody>
+      <tr class="subhead"><td colspan="6">一、申报抵扣的进项税额</td></tr>
+      <tr><td>1</td><td class="left">认证相符的增值税专用发票</td><td>—</td><td>—</td><td class="num fill">203,400.00</td><td class="left">包装物、运输服务等非核定农产品进项</td></tr>
+      <tr><td>5</td><td class="left">海关进口增值税专用缴款书</td><td>—</td><td>—</td><td class="num fill">5,000.00</td><td class="left">案例假设</td></tr>
+      <tr><td>6</td><td class="left">农产品收购发票或者销售发票</td><td class="key">不填</td><td class="key">不填</td><td class="num key">633,325.41</td><td class="left">核定扣除结果，只填税额</td></tr>
+      <tr><td>8a</td><td class="left">加计扣除农产品进项税额</td><td>—</td><td>—</td><td class="num key">0.00</td><td class="left">核定扣除不重复填</td></tr>
+      <tr class="total"><td>12</td><td class="left">当期申报抵扣进项税额合计</td><td>—</td><td>—</td><td class="num">841,725.41</td><td class="left">203,400＋5,000＋633,325.41</td></tr>
+      <tr class="subhead"><td colspan="6">二、进项税额转出额</td></tr>
+      <tr><td>13</td><td class="left">本期进项税额转出额</td><td>—</td><td>—</td><td class="num fill">10,000.00</td><td class="left">汇总转出，带入主表第14栏</td></tr>
+      <tr><td>16</td><td class="left">非正常损失</td><td>—</td><td>—</td><td class="num fill">10,000.00</td><td class="left">案例假设</td></tr>
+      <tr><td>17-23b</td><td class="left">简易计税、红字专票、留抵退税抵减等</td><td>—</td><td>—</td><td class="num">0.00</td><td></td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section class="slide wide" id="main1"><div class="content">
+  <div class="kicker">20 / MAIN RETURN PART 1</div><h2>主表全貌：销售额与进项税额区</h2>
+  <table>
+    <thead><tr><th>栏次</th><th class="left">项目</th><th>一般项目本月数</th><th>即征即退本月数</th><th class="left">说明</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td class="left">按适用税率计税销售额</td><td class="num fill">7,600,000.00</td><td class="num">0.00</td><td class="left">来自附表一</td></tr>
+      <tr><td>2</td><td class="left">其中：应税货物销售额</td><td class="num">7,600,000.00</td><td class="num">0.00</td><td></td></tr>
+      <tr><td>5</td><td class="left">按简易办法计税销售额</td><td class="num">0.00</td><td class="num">0.00</td><td></td></tr>
+      <tr><td>7</td><td class="left">免、抵、退办法出口销售额</td><td class="num">0.00</td><td class="num">0.00</td><td></td></tr>
+      <tr><td>8</td><td class="left">免税销售额</td><td class="num">0.00</td><td class="num">0.00</td><td></td></tr>
+      <tr><td>11</td><td class="left">销项税额</td><td class="num key">964,000.00</td><td class="num">0.00</td><td class="left">附表一销项税额合计</td></tr>
+      <tr><td>12</td><td class="left">进项税额</td><td class="num key">841,725.41</td><td class="num">0.00</td><td class="left">附表二第12栏</td></tr>
+      <tr><td>13</td><td class="left">上期留抵税额</td><td class="num fill">30,000.00</td><td class="num">0.00</td><td class="left">案例假设</td></tr>
+      <tr><td>14</td><td class="left">进项税额转出</td><td class="num fill">10,000.00</td><td class="num">0.00</td><td class="left">附表二第13栏</td></tr>
+      <tr class="total"><td>17</td><td class="left">应抵扣税额合计</td><td class="num">861,725.41</td><td class="num">0.00</td><td class="left">841,725.41＋30,000－10,000</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section class="slide wide" id="main2"><div class="content">
+  <div class="kicker">21 / MAIN RETURN PART 2</div><h2>主表全貌：应纳税额与期末未缴税额区</h2>
+  <table>
+    <thead><tr><th>栏次</th><th class="left">项目</th><th>一般项目本月数</th><th>即征即退本月数</th><th class="left">说明</th></tr></thead>
+    <tbody>
+      <tr><td>18</td><td class="left">实际抵扣税额</td><td class="num">861,725.41</td><td class="num">0.00</td><td class="left">小于销项税额，全额抵扣</td></tr>
+      <tr class="total"><td>19</td><td class="left">应纳税额</td><td class="num">102,274.59</td><td class="num">0.00</td><td class="left">964,000－861,725.41</td></tr>
+      <tr><td>20</td><td class="left">期末留抵税额</td><td class="num">0.00</td><td class="num">—</td><td></td></tr>
+      <tr><td>21</td><td class="left">简易计税办法计算的应纳税额</td><td class="num">0.00</td><td class="num">0.00</td><td></td></tr>
+      <tr><td>23</td><td class="left">应纳税额减征额</td><td class="num">0.00</td><td class="num">0.00</td><td></td></tr>
+      <tr><td>24</td><td class="left">应纳税额合计</td><td class="num key">102,274.59</td><td class="num">0.00</td><td class="left">19＋21－23</td></tr>
+      <tr><td>27</td><td class="left">本期已缴税额</td><td class="num">0.00</td><td class="num">0.00</td><td class="left">假设未预缴</td></tr>
+      <tr><td>29</td><td class="left">期末未缴税额</td><td class="num key">102,274.59</td><td class="num">0.00</td><td class="left">本例待缴增值税</td></tr>
+      <tr><td>30-36</td><td class="left">欠缴、查补、即征即退、留抵退税等栏次</td><td class="num">0.00</td><td class="num">0.00</td><td class="left">本案例未涉及</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section class="slide wide" id="surtax"><div class="content">
+  <div class="kicker">22 / SURTAXES</div><h2>附加税费申报：以本期应纳增值税为基础</h2>
+  <p>假设所在地适用城市维护建设税7%、教育费附加3%、地方教育附加2%，且无减免优惠。</p>
+  <table>
+    <thead><tr><th>项目</th><th>计税依据</th><th>税/费率</th><th>本期应纳税/费额</th><th class="left">说明</th></tr></thead>
+    <tbody>
+      <tr><td>城市维护建设税</td><td class="num">102,274.59</td><td>7%</td><td class="num">7,159.22</td><td class="left">按实际缴纳增值税计算</td></tr>
+      <tr><td>教育费附加</td><td class="num">102,274.59</td><td>3%</td><td class="num">3,068.24</td><td class="left">按实际缴纳增值税计算</td></tr>
+      <tr><td>地方教育附加</td><td class="num">102,274.59</td><td>2%</td><td class="num">2,045.49</td><td class="left">按实际缴纳增值税计算</td></tr>
+      <tr class="total"><td>合计</td><td>—</td><td>12%</td><td class="num">12,272.95</td><td>演示数据</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section class="slide wide" id="accounting"><div class="content">
+  <div class="kicker">23 / ACCOUNTING</div><h2>会计核算处理：采购、生产、销售与核定抵扣</h2>
+  <table>
+    <thead><tr><th>环节</th><th class="left">会计分录示例</th><th>金额</th><th class="left">说明</th></tr></thead>
+    <tbody>
+      <tr><td>购进鲜苹果</td><td class="left">借：原材料—鲜苹果　7,950,000.00<br>贷：银行存款/应付账款　7,950,000.00</td><td class="num">7,950,000.00</td><td class="left">核定扣除下，购进时通常不直接确认农产品进项税额。</td></tr>
+      <tr><td>非农产品专票进项</td><td class="left">借：原材料/费用等<br>借：应交税费—应交增值税（进项税额）　203,400.00<br>贷：银行存款/应付账款</td><td class="num">203,400.00</td><td class="left">包装物、运输等按合规扣税凭证抵扣。</td></tr>
+      <tr><td>确认核定扣除进项</td><td class="left">借：应交税费—应交增值税（进项税额）　633,325.41<br>贷：主营业务成本/生产成本/库存商品等　633,325.41</td><td class="num key">633,325.41</td><td class="left">贷方科目按企业成本核算流程确定，核心是确认进项并调整成本。</td></tr>
+      <tr><td>销售确认销项</td><td class="left">借：应收账款/银行存款　8,564,000.00<br>贷：主营业务收入　7,600,000.00<br>贷：应交税费—应交增值税（销项税额）　964,000.00</td><td class="num">964,000.00</td><td class="left">13%产品与9%产品分别计算销项。</td></tr>
+      <tr><td>非正常损失转出</td><td class="left">借：营业外支出/管理费用等　10,000.00<br>贷：应交税费—应交增值税（进项税额转出）　10,000.00</td><td class="num">10,000.00</td><td class="left">案例假设。</td></tr>
+      <tr class="total"><td>结转未交增值税</td><td class="left">借：应交税费—应交增值税（转出未交增值税）　102,274.59<br>贷：应交税费—未交增值税　102,274.59</td><td class="num">102,274.59</td><td class="left">与主表应纳税额一致。</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section class="slide wide" id="ledger"><div class="content">
+  <div class="kicker">24 / LEDGER</div><h2>税会差异台账：把账面成本和税务抵扣分开管理</h2>
+  <table>
+    <thead><tr><th>项目</th><th>会计口径</th><th>税务核定扣除口径</th><th>差异原因</th><th class="left">管理建议</th></tr></thead>
+    <tbody>
+      <tr><td>鲜苹果采购</td><td>按实际采购入库</td><td>本期不按购进额直接抵扣</td><td>抵扣与采购时点脱钩</td><td class="left">建立采购批次、发票、入库、退货台账。</td></tr>
+      <tr><td>加工产品耗用</td><td>按实际领料和成本归集</td><td>按销售数量×核定单耗倒推</td><td>生产与销售可能跨期</td><td class="left">分开管理领料、产成品入库、销售出库。</td></tr>
+      <tr><td>外购半成品</td><td>形成销售成本和收入</td><td>不得纳入自产核定耗用</td><td>非本企业耗用农产品加工</td><td class="left">单独设置外购成品/半成品销售台账。</td></tr>
+      <tr><td>核定进项确认</td><td>通过成本或库存科目调整</td><td>附表二第6栏633,325.41</td><td>会计科目与申报栏次不同</td><td class="left">编制“计算—分录—申报”三方勾稽表。</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section class="slide" id="audit"><div class="content">
+  <div class="kicker">25 / TAX AUDIT FOCUS</div><h2>税务可能稽查方向：真实性、匹配性、重复抵扣</h2>
+  <div class="grid grid-2">
+    <div class="card"><h3>采购真实性</h3><p>核查发票、付款流水、物流、入库单、供应商或农户身份是否相互印证。</p></div>
+    <div class="card"><h3>平均购买单价</h3><p>关注期初、购进、退货、折让是否纳入均价，是否错误并入运费仓储费。</p></div>
+    <div class="card"><h3>销售数量真实性</h3><p>比对发票、未开票收入、出库单、合同和物流记录。</p></div>
+    <div class="card"><h3>单耗标准适用</h3><p>核查是否擅自调整单耗，是否把不同产品和工艺混用同一标准。</p></div>
+    <div class="card"><h3>外购成品剔除</h3><p>关注外购浓缩汁、外购果泥、委托加工半成品是否混入自产产品数量。</p></div>
+    <div class="card"><h3>重复抵扣</h3><p>重点核查同一批农产品是否既凭票抵扣又核定扣除。</p></div>
+  </div>
+  <div class="callout warn" style="margin-top:16px">应对思路：从采购、入库、生产、销售、核定计算、会计分录到申报表，要能一路追溯到原始凭证。</div>
+</div></section>
+
+<section class="slide" id="docs"><div class="content">
+  <div class="kicker">26 / DOCUMENTATION</div><h2>留存资料清单：让每一个数都有来源</h2>
+  <div class="grid grid-3">
+    <div class="card"><h3>采购侧</h3><p>采购合同、农产品发票、收购凭证、入库单、退货单、结算单、付款记录。</p></div>
+    <div class="card"><h3>生产侧</h3><p>生产领料单、产量日报、损耗记录、核定单耗文件、产品入库单。</p></div>
+    <div class="card"><h3>销售侧</h3><p>销售发票、出库单、销售合同、退货记录、外购半成品分拆台账。</p></div>
+    <div class="card"><h3>库存侧</h3><p>期初库存、期末库存、盘点表、报废审批、非正常损失说明。</p></div>
+    <div class="card"><h3>申报侧</h3><p>核定扣除明细表、汇总表、附表一、附表二、主表、附加税费表。</p></div>
+    <div class="card"><h3>备案核定</h3><p>主管税务机关核定资料、行业扩围文件、损耗率备案资料、可比企业参照资料。</p></div>
+  </div>
+</div></section>
+
+<section class="slide" id="sources"><div class="content">
+  <div class="kicker">27 / SOURCES</div><h2>政策来源与适用提醒</h2>
+  <ul class="cols">
+    <li>财政部、国家税务总局《财税〔2012〕38号》：农产品增值税进项税额核定扣除试点及实施办法。</li>
+    <li>财政部、国家税务总局《财税〔2013〕57号》：地方扩围试点口径。</li>
+    <li>增值税及附加税费申报表填表说明：附表一、附表二和主表的勾稽关系。</li>
+    <li>地方税务机关填报说明：执行核定扣除的，附表二第6栏填写当期允许抵扣农产品进项税额，份数、金额不填写。</li>
+    <li>企业所在地电子税务局当前表单、主管税务机关核定标准和有效公告，应作为正式申报依据。</li>
+  </ul>
+  <div class="callout">本讲义用于内部培训和申报底稿讲解，不替代正式纳税申报。实际业务应结合所在地政策、行业标准和企业真实数据处理。</div>
+</div></section>
+
+</main>
+</div>
+</body>
+</html>
 
