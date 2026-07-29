@@ -1,1 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>土地增值税申报表演示｜预缴与清算</title>
+<style>
+:root{--ink:#172033;--muted:#667085;--line:#d7e0eb;--bg:#f4f7fb;--blue:#1d4ed8;--green:#0f766e;--soft:#eef4ff;--warn:#fff7ed;--red:#b91c1c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;color:var(--ink);line-height:1.55}
+.wrap{max-width:1260px;margin:auto;padding:24px}
+.hero{background:linear-gradient(135deg,#123b85,#0f766e);color:#fff;padding:32px;border-radius:18px;box-shadow:0 12px 30px rgba(15,23,42,.15)}
+h1{margin:0 0 8px;font-size:32px}.sub{opacity:.9}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.badge{border:1px solid rgba(255,255,255,.35);padding:5px 10px;border-radius:999px;font-size:12px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+button{border:0;border-radius:9px;padding:10px 14px;font-weight:700;cursor:pointer}.primary{background:var(--blue);color:white}.secondary{background:white;border:1px solid var(--line)}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}nav a{background:#fff;border:1px solid var(--line);padding:7px 11px;border-radius:999px;text-decoration:none;color:var(--blue);font-size:13px}
+section{background:#fff;margin:18px 0;padding:24px;border-radius:15px;box-shadow:0 4px 16px rgba(15,23,42,.05)}
+h2{font-size:22px;margin:0 0 15px;border-left:5px solid var(--blue);padding-left:12px}
+h3{font-size:17px;margin:20px 0 8px}
+table{width:100%;border-collapse:collapse;margin:10px 0 17px;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 9px;vertical-align:middle}
+th{background:#edf2f8;text-align:center}td.num{text-align:right}
+td[contenteditable=true]{background:#fffdf2}
+.note{padding:12px 15px;background:var(--soft);border-left:4px solid var(--blue);border-radius:8px;margin:12px 0}.warning{background:var(--warn);border-left-color:#b45309}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{border:1px solid var(--line);border-radius:12px;padding:15px}.kpi{font-size:26px;color:var(--blue);font-weight:800}
+.form-title{text-align:center;margin:8px 0 18px}.form-title h2{border:0;padding:0;margin:0}.form-no{font-size:12px;color:var(--muted)}
+.sign{height:60px}.small{font-size:12px;color:var(--muted)}
+.check{color:var(--green);font-weight:800}.risk{color:var(--red);font-weight:800}
+.pagebreak{break-before:page}
+footer{text-align:center;color:var(--muted);padding:20px}
+@media(max-width:800px){.wrap{padding:10px}.grid{grid-template-columns:1fr}table{display:block;overflow-x:auto;white-space:nowrap}}
+@media print{body{background:#fff}.wrap{max-width:none;padding:0}.toolbar,nav{display:none}.hero,section{box-shadow:none;border:1px solid #aaa;border-radius:0}section{break-inside:avoid}td[contenteditable=true]{background:#fff}.pagebreak{break-before:page}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<h1>土地增值税申报表演示</h1>
+<div class="sub">“云栖花园一期”预缴申报、补充预缴与清算申报全过程演示。金额单位：人民币万元。</div>
+<div class="badges"><span class="badge">房地产开发项目</span><span class="badge">预缴＋清算</span><span class="badge">住宅＋商铺分类计算</span><span class="badge">HTML可编辑打印</span></div>
+</header>
+
+<div class="toolbar">
+<button class="primary" onclick="window.print()">打印 / 导出PDF</button>
+<button class="secondary" onclick="saveLocal()">保存修改</button>
+<button class="secondary" onclick="loadLocal()">恢复保存</button>
+<span id="status" class="check"></span>
+</div>
+
+<nav><a href="#overview">申报总览</a><a href="#prepay">预缴申报表</a><a href="#ledger">预缴台账</a><a href="#liquidation">清算申报表</a><a href="#reconcile">税款勾稽</a><a href="#attachments">资料清单</a></nav>
+
+<section id="overview">
+<h2>一、项目申报总览</h2>
+<table>
+<tr><th>纳税人名称</th><td contenteditable="true">甲房地产开发有限公司</td><th>统一社会信用代码</th><td contenteditable="true">91310000MA1DEMO001</td></tr>
+<tr><th>项目名称</th><td contenteditable="true">云栖花园一期</td><th>清算单位</th><td contenteditable="true">云栖花园一期</td></tr>
+<tr><th>项目地址</th><td contenteditable="true">某市滨江新区云河路88号</td><th>主管税务机关</th><td contenteditable="true">某市税务局第一税务分局</td></tr>
+<tr><th>预缴申报期间</th><td contenteditable="true">2022年第2季度—2025年第4季度</td><th>清算申报日期</th><td contenteditable="true">2026-07-25</td></tr>
+</table>
+<div class="grid">
+<div class="card"><b>累计不含税收入</b><div class="kpi">104,000</div><div class="small">住宅78,000；商铺26,000</div></div>
+<div class="card"><b>累计已预缴税款</b><div class="kpi">6,200</div><div class="small">按期预缴2,340；补充预缴3,860</div></div>
+<div class="card"><b>清算应补税款</b><div class="kpi">3,760</div><div class="small">应纳9,960－已缴6,200</div></div>
+</div>
+<div class="note warning"><b>教学口径：</b>预征率由省级税务机关结合当地情况确定。本案例仅演示申报逻辑：住宅按2%、商铺按3%形成按期预缴税款，并另列历史补充预缴。实际填报必须使用项目所在地有效预征率及电子税务局现行表单。</div>
+</section>
+
+<section id="prepay" class="pagebreak">
+<div class="form-title"><div class="form-no">教学模拟表 A｜房地产开发项目预缴阶段</div><h2>土地增值税预缴纳税申报表</h2></div>
+<table>
+<tr><th>税款所属期</th><td contenteditable="true">2025-10-01 至 2025-12-31</td><th>申报日期</th><td contenteditable="true">2026-01-15</td></tr>
+<tr><th>项目名称</th><td contenteditable="true">云栖花园一期</td><th>项目编号</th><td contenteditable="true">TDZZS-YQ-001</td></tr>
+<tr><th>纳税人名称</th><td contenteditable="true">甲房地产开发有限公司</td><th>登记注册类型</th><td contenteditable="true">有限责任公司</td></tr>
+</table>
+
+<h3>本期预缴计算明细</h3>
+<table>
+<thead><tr><th>房地产类型</th><th>本期含税收入</th><th>本期不含税收入</th><th>预征率</th><th>本期应预缴税额</th><th>本期已缴税额</th><th>本期应补（退）</th></tr></thead>
+<tbody>
+<tr><td>普通住宅</td><td class="num" contenteditable="true">2,180.00</td><td class="num" contenteditable="true">2,000.00</td><td class="num" contenteditable="true">2%</td><td class="num" contenteditable="true">40.00</td><td class="num" contenteditable="true">0.00</td><td class="num" contenteditable="true">40.00</td></tr>
+<tr><td>商铺/办公</td><td class="num" contenteditable="true">1,090.00</td><td class="num" contenteditable="true">1,000.00</td><td class="num" contenteditable="true">3%</td><td class="num" contenteditable="true">30.00</td><td class="num" contenteditable="true">0.00</td><td class="num" contenteditable="true">30.00</td></tr>
+<tr><td><b>合计</b></td><td class="num"><b>3,270.00</b></td><td class="num"><b>3,000.00</b></td><td>—</td><td class="num"><b>70.00</b></td><td class="num"><b>0.00</b></td><td class="num"><b>70.00</b></td></tr>
+</tbody>
+</table>
+
+<h3>累计预缴情况</h3>
+<table>
+<tr><th>截至上期累计不含税收入</th><td class="num" contenteditable="true">101,000.00</td><th>本期不含税收入</th><td class="num" contenteditable="true">3,000.00</td></tr>
+<tr><th>累计不含税收入</th><td class="num" contenteditable="true">104,000.00</td><th>截至本期按期预缴税额</th><td class="num" contenteditable="true">2,340.00</td></tr>
+<tr><th>历史补充预缴税额</th><td class="num" contenteditable="true">3,860.00</td><th>累计已缴土地增值税</th><td class="num" contenteditable="true">6,200.00</td></tr>
+</table>
+
+<table>
+<tr><th>纳税人声明</th><td contenteditable="true">本申报表根据真实交易资料填报，申报数据完整、准确。</td></tr>
+<tr><th>经办人</th><td contenteditable="true">张敏</td><th>财务负责人</th><td contenteditable="true">李强</td><th>法定代表人</th><td contenteditable="true">王磊</td></tr>
+</table>
+</section>
+
+<section id="ledger">
+<h2>二、预缴申报与缴款台账</h2>
+<table>
+<thead><tr><th>序号</th><th>所属期</th><th>住宅不含税收入</th><th>住宅预征率</th><th>住宅预缴</th><th>商铺不含税收入</th><th>商铺预征率</th><th>商铺预缴</th><th>补充预缴</th><th>本期缴款合计</th><th>凭证号</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>2022年</td><td class="num">12,000</td><td>2%</td><td class="num">240</td><td class="num">1,000</td><td>3%</td><td class="num">30</td><td class="num">0</td><td class="num">270</td><td contenteditable="true">完税2022-01</td></tr>
+<tr><td>2</td><td>2023年</td><td class="num">24,000</td><td>2%</td><td class="num">480</td><td class="num">5,000</td><td>3%</td><td class="num">150</td><td class="num">0</td><td class="num">630</td><td contenteditable="true">完税2023-01</td></tr>
+<tr><td>3</td><td>2024年</td><td class="num">26,000</td><td>2%</td><td class="num">520</td><td class="num">10,000</td><td>3%</td><td class="num">300</td><td class="num">1,600</td><td class="num">2,420</td><td contenteditable="true">完税2024-01/补01</td></tr>
+<tr><td>4</td><td>2025年</td><td class="num">16,000</td><td>2%</td><td class="num">320</td><td class="num">10,000</td><td>3%</td><td class="num">300</td><td class="num">2,260</td><td class="num">2,880</td><td contenteditable="true">完税2025-01/补01</td></tr>
+<tr><td colspan="2"><b>累计</b></td><td class="num"><b>78,000</b></td><td>—</td><td class="num"><b>1,560</b></td><td class="num"><b>26,000</b></td><td>—</td><td class="num"><b>780</b></td><td class="num"><b>3,860</b></td><td class="num"><b>6,200</b></td><td></td></tr>
+</tbody>
+</table>
+<div class="note"><b>台账勾稽：</b>住宅按期预缴1,560＋商铺按期预缴780＋补充预缴3,860＝累计已缴6,200万元。清算申报抵减金额应与完税凭证、电子税务局缴款记录一致。</div>
+</section>
+
+<section id="liquidation" class="pagebreak">
+<div class="form-title"><div class="form-no">教学模拟表 B｜房地产开发项目清算阶段</div><h2>土地增值税清算纳税申报表</h2></div>
+<table>
+<tr><th>纳税人名称</th><td contenteditable="true">甲房地产开发有限公司</td><th>统一社会信用代码</th><td contenteditable="true">91310000MA1DEMO001</td></tr>
+<tr><th>项目名称</th><td contenteditable="true">云栖花园一期</td><th>清算单位</th><td contenteditable="true">云栖花园一期</td></tr>
+<tr><th>清算收入截止日</th><td contenteditable="true">2025-12-31</td><th>清算申报日期</th><td contenteditable="true">2026-07-25</td></tr>
+<tr><th>批准立项时间</th><td contenteditable="true">2020-11-20</td><th>竣工验收时间</th><td contenteditable="true">2025-08-30</td></tr>
+</table>
+
+<h3>按房地产类型计算</h3>
+<table>
+<thead><tr><th>项目</th><th>普通住宅</th><th>商铺/办公</th><th>合计</th></tr></thead>
+<tbody>
+<tr><td>1.不含增值税转让收入</td><td class="num">78,000</td><td class="num">26,000</td><td class="num">104,000</td></tr>
+<tr><td>2.取得土地使用权支付金额</td><td class="num">13,500</td><td class="num">4,500</td><td class="num">18,000</td></tr>
+<tr><td>3.房地产开发成本</td><td class="num">27,000</td><td class="num">9,000</td><td class="num">36,000</td></tr>
+<tr><td>4.房地产开发费用</td><td class="num">4,050</td><td class="num">1,350</td><td class="num">5,400</td></tr>
+<tr><td>5.与转让房地产有关税金</td><td class="num">420</td><td class="num">180</td><td class="num">600</td></tr>
+<tr><td>6.房地产开发企业加计扣除</td><td class="num">8,100</td><td class="num">2,700</td><td class="num">10,800</td></tr>
+<tr><td><b>7.扣除项目金额合计</b></td><td class="num"><b>53,070</b></td><td class="num"><b>17,730</b></td><td class="num"><b>70,800</b></td></tr>
+<tr><td><b>8.增值额（1－7）</b></td><td class="num"><b>24,930</b></td><td class="num"><b>8,270</b></td><td class="num"><b>33,200</b></td></tr>
+<tr><td>9.增值率（8÷7）</td><td class="num">46.98%</td><td class="num">46.64%</td><td class="num">46.89%</td></tr>
+<tr><td>10.适用税率</td><td class="num">30%</td><td class="num">30%</td><td>—</td></tr>
+<tr><td>11.速算扣除系数</td><td class="num">0%</td><td class="num">0%</td><td>—</td></tr>
+<tr><td><b>12.应纳土地增值税</b></td><td class="num"><b>7,479</b></td><td class="num"><b>2,481</b></td><td class="num"><b>9,960</b></td></tr>
+</tbody>
+</table>
+
+<h3>预缴税款抵减与清算税款</h3>
+<table>
+<tr><th>按期预缴税额</th><td class="num">2,340</td><th>历史补充预缴税额</th><td class="num">3,860</td></tr>
+<tr><th>累计允许抵减预缴税额</th><td class="num">6,200</td><th>清算应纳税额</th><td class="num">9,960</td></tr>
+<tr><th><b>清算应补（退）税额</b></th><td class="num"><b>3,760</b></td><th>缴款期限</th><td contenteditable="true">按主管税务机关核定期限</td></tr>
+</table>
+
+<h3>面积与销售状态</h3>
+<table>
+<thead><tr><th>房地产类型</th><th>可售面积㎡</th><th>清算截止已售面积㎡</th><th>未售面积㎡</th><th>销售比例</th><th>后续处理</th></tr></thead>
+<tbody>
+<tr><td>普通住宅</td><td class="num">30,000</td><td class="num">29,400</td><td class="num">600</td><td class="num">98.00%</td><td>纳入清算后尾盘销售管理</td></tr>
+<tr><td>商铺/办公</td><td class="num">10,000</td><td class="num">9,500</td><td class="num">500</td><td class="num">95.00%</td><td>纳入清算后尾盘销售管理</td></tr>
+<tr><td><b>合计</b></td><td class="num"><b>40,000</b></td><td class="num"><b>38,900</b></td><td class="num"><b>1,100</b></td><td class="num"><b>97.25%</b></td><td></td></tr>
+</tbody>
+</table>
+
+<table>
+<tr><th>纳税人声明</th><td contenteditable="true">本清算申报所依据的收入、成本、费用、税金、预缴税款及面积资料真实、完整。</td></tr>
+<tr><th>经办人</th><td contenteditable="true">张敏</td><th>财务负责人</th><td contenteditable="true">李强</td><th>法定代表人</th><td contenteditable="true">王磊</td></tr>
+</table>
+</section>
+
+<section id="reconcile">
+<h2>三、预缴与清算税款勾稽表</h2>
+<table>
+<thead><tr><th>勾稽项目</th><th>预缴申报/台账</th><th>清算申报</th><th>差异</th><th>复核结果</th></tr></thead>
+<tbody>
+<tr><td>住宅不含税收入</td><td class="num">78,000</td><td class="num">78,000</td><td class="num">0</td><td class="check">一致</td></tr>
+<tr><td>商铺不含税收入</td><td class="num">26,000</td><td class="num">26,000</td><td class="num">0</td><td class="check">一致</td></tr>
+<tr><td>项目累计收入</td><td class="num">104,000</td><td class="num">104,000</td><td class="num">0</td><td class="check">一致</td></tr>
+<tr><td>累计预缴税款</td><td class="num">6,200</td><td class="num">6,200</td><td class="num">0</td><td class="check">一致</td></tr>
+<tr><td>清算应纳税额</td><td>—</td><td class="num">9,960</td><td>—</td><td class="check">计算正确</td></tr>
+<tr><td>清算应补税额</td><td>—</td><td class="num">3,760</td><td>—</td><td class="check">9,960－6,200</td></tr>
+</tbody>
+</table>
+<div class="note"><b>清算截止控制：</b>演示中以2025年12月31日作为清算收入和销售面积截止日。截止日以后发生的销售，应按清算后尾盘销售规则建立独立台账并申报。</div>
+</section>
+
+<section id="attachments">
+<h2>四、申报资料与附件索引</h2>
+<table>
+<thead><tr><th>序号</th><th>资料名称</th><th>预缴阶段</th><th>清算阶段</th><th>演示索引</th><th>复核说明</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>项目立项、规划、土地及分期资料</td><td>备查</td><td>提交/备查</td><td>A1</td><td>确认清算单位</td></tr>
+<tr><td>2</td><td>销售合同、网签、发票及收款台账</td><td>申报依据</td><td>提交/备查</td><td>A2</td><td>核对不含税收入</td></tr>
+<tr><td>3</td><td>预缴申报表及完税凭证</td><td>形成</td><td>提交</td><td>A3</td><td>确认抵减税额6,200</td></tr>
+<tr><td>4</td><td>土地成本及开发成本明细</td><td>备查</td><td>提交/备查</td><td>A4</td><td>与工作底稿勾稽</td></tr>
+<tr><td>5</td><td>成本分摊说明及计算表</td><td>备查</td><td>提交/备查</td><td>A5</td><td>住宅75%、商铺25%</td></tr>
+<tr><td>6</td><td>清算计算表、风险调整表</td><td>—</td><td>提交</td><td>A6</td><td>应纳税额9,960</td></tr>
+<tr><td>7</td><td>未售房源及尾盘销售台账</td><td>—</td><td>建立</td><td>A7</td><td>未售面积1,100㎡</td></tr>
+</tbody>
+</table>
+<div class="note warning"><b>使用声明：</b>本文件是教学模拟申报表，不替代电子税务局法定申报表。各地表式、字段、申报周期、预征率、资料清单及清算审核要求可能不同，应以项目所在地主管税务机关现行要求为准。</div>
+</section>
+
+<footer>土地增值税申报表演示 · 预缴与清算一体化教学版 · 2026</footer>
+</div>
+<script>
+function cells(){return [...document.querySelectorAll('[contenteditable=true]')]}
+function saveLocal(){localStorage.setItem('tdzzs_forms',JSON.stringify(cells().map(x=>x.innerHTML)));document.getElementById('status').textContent='已保存'}
+function loadLocal(){let d=localStorage.getItem('tdzzs_forms');if(!d){document.getElementById('status').textContent='无保存记录';return}JSON.parse(d).forEach((v,i)=>{if(cells()[i])cells()[i].innerHTML=v});document.getElementById('status').textContent='已恢复'}
+</script>
+</body>
+</html>
 
