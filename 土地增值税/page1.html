@@ -1,1 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>土地增值税清算工作底稿模板（演示数据）</title>
+<style>
+:root{
+  --ink:#182033; --muted:#667085; --line:#d8e0ea; --bg:#f5f7fb;
+  --primary:#1d4ed8; --primary2:#0f766e; --soft:#eef4ff; --warn:#fff7ed;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;color:var(--ink);line-height:1.55}
+.wrap{max-width:1280px;margin:0 auto;padding:24px}
+header{background:linear-gradient(135deg,#123b85,#0f766e);color:#fff;padding:30px;border-radius:18px;box-shadow:0 12px 30px rgba(15,23,42,.16)}
+h1{margin:0 0 8px;font-size:32px}
+.sub{opacity:.9}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+button{border:0;border-radius:9px;padding:10px 14px;font-weight:700;cursor:pointer}
+.primary{background:var(--primary);color:#fff}
+.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+nav a{background:#fff;border:1px solid var(--line);padding:7px 11px;border-radius:999px;color:var(--primary);text-decoration:none;font-size:13px}
+section{background:#fff;margin:18px 0;padding:24px;border-radius:15px;box-shadow:0 4px 16px rgba(15,23,42,.05)}
+h2{font-size:22px;border-left:5px solid var(--primary);padding-left:12px;margin:0 0 14px}
+h3{font-size:17px;margin:18px 0 8px}
+.note{background:var(--soft);border-left:4px solid var(--primary);padding:12px 14px;border-radius:8px;margin:12px 0}
+.warning{background:var(--warn);border-left-color:#b45309}
+table{width:100%;border-collapse:collapse;margin:10px 0 16px;font-size:13px}
+th,td{border:1px solid var(--line);padding:8px 9px;vertical-align:top}
+th{background:#edf2f8;text-align:center}
+td[contenteditable="true"]{background:#fffdf2;min-width:80px}
+td.num{text-align:right}
+.small{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{border:1px solid var(--line);padding:14px;border-radius:11px}
+.sig{height:66px}
+.print-break{break-before:page}
+.status{font-size:13px;color:var(--primary2);font-weight:700}
+footer{text-align:center;color:var(--muted);padding:20px}
+@media(max-width:800px){.wrap{padding:10px}.grid{grid-template-columns:1fr}table{display:block;overflow-x:auto;white-space:nowrap}}
+@media print{
+  body{background:#fff}.wrap{max-width:none;padding:0}.toolbar,nav{display:none}
+  header,section{box-shadow:none;border:1px solid #bbb;border-radius:0}
+  section{break-inside:avoid} td[contenteditable="true"]{background:#fff}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>土地增值税清算工作底稿模板（数据演示）</h1>
+<div class="sub">已填入“云栖花园一期”完整模拟数据，适用于课堂演示、岗位带教及清算底稿勾稽训练。黄色单元格仍可继续编辑。</div>
+</header>
+<div class="toolbar">
+<button class="primary" onclick="window.print()">打印 / 导出PDF</button>
+<button class="secondary" onclick="clearEditable()">清空可编辑内容</button>
+<button class="secondary" onclick="saveLocal()">保存到浏览器</button>
+<button class="secondary" onclick="loadLocal()">恢复已保存内容</button>
+<span class="status" id="status"></span>
+</div>
+<nav>
+<a href="#cover">封面与索引</a><a href="#wp01">WP-01 项目概况</a><a href="#wp02">WP-02 收入核对</a>
+<a href="#wp03">WP-03 土地成本</a><a href="#wp04">WP-04 开发成本</a><a href="#wp05">WP-05 分摊</a>
+<a href="#wp06">WP-06 税金费用</a><a href="#wp07">WP-07 税额计算</a><a href="#wp08">WP-08 风险复核</a>
+</nav>
+<section id="cover">
+<h2>封面与底稿索引</h2>
+<div class="grid">
+<div class="card">
+<table>
+<tr><th>项目名称</th><td contenteditable="true">云栖花园一期</td></tr>
+<tr><th>纳税人名称</th><td contenteditable="true">甲房地产开发有限公司</td></tr>
+<tr><th>统一社会信用代码</th><td contenteditable="true">91310000MA1DEMO001</td></tr>
+<tr><th>清算单位</th><td contenteditable="true">云栖花园一期</td></tr>
+<tr><th>所属期间</th><td contenteditable="true">2021年1月—2025年12月</td></tr>
+<tr><th>主管税务机关</th><td contenteditable="true">某市税务局第一税务分局</td></tr>
+</table>
+</div>
+<div class="card">
+<table>
+<tr><th>编制人</th><td contenteditable="true">张敏</td><th>日期</th><td contenteditable="true">2026-07-20</td></tr>
+<tr><th>复核人</th><td contenteditable="true">李强</td><th>日期</th><td contenteditable="true">2026-07-22</td></tr>
+<tr><th>项目负责人</th><td contenteditable="true">王磊</td><th>日期</th><td contenteditable="true">2026-07-25</td></tr>
+<tr><th>版本号</th><td contenteditable="true">V1.0</td><th>币种</th><td contenteditable="true">人民币万元</td></tr>
+</table>
+</div>
+</div>
+<table>
+<thead><tr><th>底稿编号</th><th>底稿名称</th><th>编制状态</th><th>编制人</th><th>复核人</th><th>索引/附件</th><th>备注</th></tr></thead>
+<tbody>
+<tr><td>WP-01</td><td>项目基本情况及清算条件判断表</td><td contenteditable="true">已完成</td><td contenteditable="true">张敏</td><td contenteditable="true">李强</td><td contenteditable="true">A1-A8</td><td contenteditable="true">演示数据</td></tr>
+<tr><td>WP-02</td><td>房地产转让收入核对表</td><td contenteditable="true">已完成</td><td contenteditable="true">张敏</td><td contenteditable="true">李强</td><td contenteditable="true">A1-A8</td><td contenteditable="true">演示数据</td></tr>
+<tr><td>WP-03</td><td>取得土地使用权支付金额审核表</td><td contenteditable="true">已完成</td><td contenteditable="true">张敏</td><td contenteditable="true">李强</td><td contenteditable="true">A1-A8</td><td contenteditable="true">演示数据</td></tr>
+<tr><td>WP-04</td><td>房地产开发成本审核表</td><td contenteditable="true">已完成</td><td contenteditable="true">张敏</td><td contenteditable="true">李强</td><td contenteditable="true">A1-A8</td><td contenteditable="true">演示数据</td></tr>
+<tr><td>WP-05</td><td>共同成本费用分摊表</td><td contenteditable="true">已完成</td><td contenteditable="true">张敏</td><td contenteditable="true">李强</td><td contenteditable="true">A1-A8</td><td contenteditable="true">演示数据</td></tr>
+<tr><td>WP-06</td><td>开发费用及相关税金审核表</td><td contenteditable="true">已完成</td><td contenteditable="true">张敏</td><td contenteditable="true">李强</td><td contenteditable="true">A1-A8</td><td contenteditable="true">演示数据</td></tr>
+<tr><td>WP-07</td><td>土地增值税清算计算表</td><td contenteditable="true">已完成</td><td contenteditable="true">张敏</td><td contenteditable="true">李强</td><td contenteditable="true">A1-A8</td><td contenteditable="true">演示数据</td></tr>
+<tr><td>WP-08</td><td>风险事项及复核结论表</td><td contenteditable="true">已完成</td><td contenteditable="true">张敏</td><td contenteditable="true">李强</td><td contenteditable="true">A1-A8</td><td contenteditable="true">演示数据</td></tr>
+</tbody>
+</table>
+</section><section id="demo">
+<h2>演示数据说明</h2>
+<div class="grid">
+<div class="card"><b>项目结构</b><p>住宅可售面积30,000㎡，商铺可售面积10,000㎡，共同成本按75%与25%分摊。</p></div>
+<div class="card"><b>核心结果</b><p>清算收入104,000万元，扣除项目70,800万元，应纳土地增值税9,960万元，扣除已预缴税款后应补3,760万元。</p></div>
+</div>
+<div class="note warning"><b>教学假设：</b>本演示数据为虚构案例，金额单位为人民币万元。开发费用按土地成本与开发成本合计的10%扣除，房地产开发企业加计扣除比例为20%。实际项目应结合属地政策调整。</div>
+</section>
+<section class="print-break" id="wp01">
+<h2>WP-01 项目基本情况及清算条件判断表</h2>
+<table>
+<tr><th>项目立项名称</th><td contenteditable="true">云栖花园一期</td><th>推广名称</th><td contenteditable="true">云栖花园</td></tr>
+<tr><th>项目地址</th><td colspan="3" contenteditable="true">某市滨江新区云河路88号</td></tr>
+<tr><th>土地取得方式</th><td contenteditable="true">招拍挂出让</td><th>土地合同编号</th><td contenteditable="true">CR2020-018</td></tr>
+<tr><th>土地面积（㎡）</th><td contenteditable="true">35,000</td><th>规划总建筑面积（㎡）</th><td contenteditable="true">62,000</td></tr>
+<tr><th>可售面积（㎡）</th><td contenteditable="true">40,000</td><th>不可售面积（㎡）</th><td contenteditable="true">22,000</td></tr>
+<tr><th>开工日期</th><td contenteditable="true">2021-03-01</td><th>竣工日期</th><td contenteditable="true">2025-08-30</td></tr>
+<tr><th>预售许可证</th><td contenteditable="true">预售字〔2022〕第108号</td><th>竣工备案号</th><td contenteditable="true">竣备2025-0818</td></tr>
+</table>
+<h3>业态构成及分类计算对象</h3>
+<table>
+<thead><tr><th>序号</th><th>房地产类型</th><th>建筑面积</th><th>可售面积</th><th>已售面积</th><th>未售面积</th><th>是否单独计算</th><th>备注</th></tr></thead>
+<tbody>
+<tr><td>1</td><td contenteditable="true">普通住宅</td><td contenteditable="true">36,000</td><td contenteditable="true">30,000</td><td contenteditable="true">29,400</td><td contenteditable="true">600</td><td contenteditable="true">是</td><td contenteditable="true">本案例简称住宅</td></tr>
+<tr><td>2</td><td contenteditable="true">非普通住宅</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">否</td><td contenteditable="true">本项目无</td></tr>
+<tr><td>3</td><td contenteditable="true">商铺/办公</td><td contenteditable="true">12,000</td><td contenteditable="true">10,000</td><td contenteditable="true">9,500</td><td contenteditable="true">500</td><td contenteditable="true">是</td><td contenteditable="true">沿街商铺</td></tr>
+<tr><td>4</td><td contenteditable="true">车位/其他</td><td contenteditable="true">14,000</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">否</td><td contenteditable="true">地下车位成本并入受益对象</td></tr>
+</tbody>
+</table>
+<h3>清算条件判断</h3>
+<table>
+<thead><tr><th>判断事项</th><th>事实情况</th><th>是否触发</th><th>证据索引</th><th>结论</th></tr></thead>
+<tbody>
+<tr><td>项目全部竣工并完成销售</td><td contenteditable="true">项目已竣工，主体房源基本完成销售</td><td contenteditable="true">是</td><td contenteditable="true">A1-01至A1-06</td><td contenteditable="true">满足清算条件</td></tr>
+<tr><td>整体转让未竣工决算项目</td><td contenteditable="true">未发生整体转让</td><td contenteditable="true">否</td><td contenteditable="true">A1-07</td><td contenteditable="true">不适用</td></tr>
+<tr><td>直接转让土地使用权</td><td contenteditable="true">未直接转让土地使用权</td><td contenteditable="true">否</td><td contenteditable="true">A1-08</td><td contenteditable="true">不适用</td></tr>
+<tr><td>已竣工验收且销售比例达到当地标准</td><td contenteditable="true">已竣工验收，整体销售比例97.25%</td><td contenteditable="true">是</td><td contenteditable="true">A1-09</td><td contenteditable="true">达到当地清算标准</td></tr>
+<tr><td>取得销售许可证满一定年限仍未售完</td><td contenteditable="true">销售许可证已满三年且基本售完</td><td contenteditable="true">是</td><td contenteditable="true">A1-10</td><td contenteditable="true">辅助触发条件</td></tr>
+<tr><td>申请注销税务登记但未清算</td><td contenteditable="true">企业持续经营，无注销计划</td><td contenteditable="true">否</td><td contenteditable="true">A1-11</td><td contenteditable="true">不适用</td></tr>
+</tbody>
+</table>
+<div class="note"><b>编制结论：</b><span contenteditable="true">经核对，本项目清算单位为“云栖花园一期”，应按普通住宅、商铺两类房地产分别计算土地增值税。</span></div>
+</section>
+<section class="print-break" id="wp02">
+<h2>WP-02 房地产转让收入核对表</h2>
+<div class="note">建议以“房号/合同”为最小颗粒度，完成网签、合同、发票、收款、产权登记和账面收入六方核对。</div>
+<table>
+<thead><tr>
+<th>序号</th><th>楼栋/房号</th><th>类型</th><th>合同日期</th><th>合同含税价</th><th>折扣/补差</th>
+<th>发票金额</th><th>累计收款</th><th>账面收入</th><th>不含税收入</th><th>差异</th><th>差异说明</th><th>证据索引</th>
+</tr></thead>
+<tbody>
+<tr><td>1</td><td contenteditable="true">1#-0101</td><td contenteditable="true">普通住宅</td><td contenteditable="true">2022-06-18</td><td contenteditable="true">280.00</td><td contenteditable="true">-2.00</td><td contenteditable="true">278.00</td><td contenteditable="true">278.00</td><td contenteditable="true">255.05</td><td contenteditable="true">255.05</td><td contenteditable="true">0.00</td><td contenteditable="true">无差异</td><td contenteditable="true">A2-001</td></tr>
+<tr><td>2</td><td contenteditable="true">2#-1202</td><td contenteditable="true">普通住宅</td><td contenteditable="true">2023-03-12</td><td contenteditable="true">365.00</td><td contenteditable="true">0.00</td><td contenteditable="true">365.00</td><td contenteditable="true">365.00</td><td contenteditable="true">334.86</td><td contenteditable="true">334.86</td><td contenteditable="true">0.00</td><td contenteditable="true">无差异</td><td contenteditable="true">A2-002</td></tr>
+<tr><td>3</td><td contenteditable="true">S1-108</td><td contenteditable="true">商铺/办公</td><td contenteditable="true">2024-09-05</td><td contenteditable="true">542.00</td><td contenteditable="true">8.00</td><td contenteditable="true">550.00</td><td contenteditable="true">550.00</td><td contenteditable="true">504.59</td><td contenteditable="true">504.59</td><td contenteditable="true">0.00</td><td contenteditable="true">面积补差已计入</td><td contenteditable="true">A2-003</td></tr>
+<tr><td colspan="4"><b>合计</b></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true">1,187.00</td><td contenteditable="true">6.00</td><td contenteditable="true">1,193.00</td><td contenteditable="true">1,193.00</td><td colspan="2">1,094.50</td></tr>
+</tbody>
+</table>
+<h3>收入分类汇总</h3>
+<table>
+<thead><tr><th>房地产类型</th><th>含税收入</th><th>增值税销项/价税分离</th><th>不含税收入</th><th>价外费用</th><th>调整后收入</th><th>复核说明</th></tr></thead>
+<tbody>
+<tr><td contenteditable="true">普通住宅</td><td contenteditable="true">85,020</td><td contenteditable="true">7,020</td><td contenteditable="true">78,000</td><td contenteditable="true">0</td><td contenteditable="true">78,000</td><td contenteditable="true">与总账、发票及收款一致</td></tr>
+<tr><td contenteditable="true">非普通住宅</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">本项目无</td></tr>
+<tr><td contenteditable="true">商铺/办公</td><td contenteditable="true">28,340</td><td contenteditable="true">2,340</td><td contenteditable="true">26,000</td><td contenteditable="true">0</td><td contenteditable="true">26,000</td><td contenteditable="true">已含面积补差等价外收益</td></tr>
+<tr><td contenteditable="true">车位/其他</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">无产权车位未单独销售</td></tr>
+</tbody>
+</table>
+</section>
+<section class="print-break" id="wp03">
+<h2>WP-03 取得土地使用权支付金额审核表</h2>
+<table>
+<thead><tr><th>序号</th><th>成本项目</th><th>合同/凭证号</th><th>对方单位</th><th>账面金额</th><th>申报金额</th><th>核减金额</th><th>核定金额</th><th>付款情况</th><th>证据索引</th><th>核减原因</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>土地出让金/转让价款</td><td contenteditable="true">CR2020-018</td><td contenteditable="true">某市自然资源局</td><td contenteditable="true">17,200</td><td contenteditable="true">17,200</td><td contenteditable="true">0</td><td contenteditable="true">17,200</td><td contenteditable="true">已全额支付</td><td contenteditable="true">A3-01</td><td contenteditable="true"></td></tr>
+<tr><td>2</td><td>契税</td><td contenteditable="true">契税完税证2020-18</td><td contenteditable="true">某市税务局</td><td contenteditable="true">688</td><td contenteditable="true">688</td><td contenteditable="true">0</td><td contenteditable="true">688</td><td contenteditable="true">已缴纳</td><td contenteditable="true">A3-02</td><td contenteditable="true"></td></tr>
+<tr><td>3</td><td>与取得土地直接相关费用</td><td contenteditable="true">地籍测绘2020-06</td><td contenteditable="true">某测绘院</td><td contenteditable="true">112</td><td contenteditable="true">112</td><td contenteditable="true">0</td><td contenteditable="true">112</td><td contenteditable="true">已支付</td><td contenteditable="true">A3-03</td><td contenteditable="true"></td></tr>
+<tr><td>4</td><td contenteditable="true">其他</td><td contenteditable="true">—</td><td contenteditable="true">—</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">—</td><td contenteditable="true">—</td><td contenteditable="true"></td></tr>
+<tr><td colspan="4">合计</td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true">18,000</td><td contenteditable="true">18,000</td><td colspan="3">0</td></tr>
+</tbody>
+</table>
+<div class="grid">
+<div class="card"><b>审核要点</b><ul class="small"><li>土地权属与清算项目是否一致</li><li>票据、缴款书、合同及付款是否匹配</li><li>是否包含不应计入土地成本的融资、滞纳或违约支出</li></ul></div>
+<div class="card"><b>审核结论</b><div class="sig" contenteditable="true">土地权属与清算单位一致，合同、缴款、契税及付款资料完整，核定土地成本18,000万元。</div></div>
+</div>
+</section>
+<section class="print-break" id="wp04">
+<h2>WP-04 房地产开发成本审核表</h2>
+<table>
+<thead><tr><th>成本类别</th><th>账面金额</th><th>直接归集金额</th><th>共同成本金额</th><th>核减金额</th><th>核定金额</th><th>主要核减原因</th><th>附件索引</th></tr></thead>
+<tbody>
+<tr><td>土地征用及拆迁补偿费</td><td contenteditable="true">1,800</td><td contenteditable="true">0</td><td contenteditable="true">1,800</td><td contenteditable="true">0</td><td contenteditable="true">1,800</td><td contenteditable="true"></td><td contenteditable="true">A4-01</td></tr>
+<tr><td>前期工程费</td><td contenteditable="true">2,600</td><td contenteditable="true">400</td><td contenteditable="true">2,200</td><td contenteditable="true">0</td><td contenteditable="true">2,600</td><td contenteditable="true"></td><td contenteditable="true">A4-02</td></tr>
+<tr><td>建筑安装工程费</td><td contenteditable="true">23,800</td><td contenteditable="true">9,800</td><td contenteditable="true">14,000</td><td contenteditable="true">300</td><td contenteditable="true">23,500</td><td contenteditable="true">无有效签证300万元</td><td contenteditable="true">A4-03</td></tr>
+<tr><td>基础设施费</td><td contenteditable="true">3,900</td><td contenteditable="true">600</td><td contenteditable="true">3,300</td><td contenteditable="true">0</td><td contenteditable="true">3,900</td><td contenteditable="true"></td><td contenteditable="true">A4-04</td></tr>
+<tr><td>公共配套设施费</td><td contenteditable="true">2,500</td><td contenteditable="true">0</td><td contenteditable="true">2,500</td><td contenteditable="true">0</td><td contenteditable="true">2,500</td><td contenteditable="true"></td><td contenteditable="true">A4-05</td></tr>
+<tr><td>开发间接费用</td><td contenteditable="true">1,900</td><td contenteditable="true">900</td><td contenteditable="true">1,000</td><td contenteditable="true">200</td><td contenteditable="true">1,700</td><td contenteditable="true">与本项目无关支出200万元</td><td contenteditable="true">A4-06</td></tr>
+<tr><td>合计</td><td contenteditable="true">36,500</td><td contenteditable="true">11,700</td><td contenteditable="true">24,800</td><td contenteditable="true">500</td><td contenteditable="true">36,000</td><td colspan="2"></td></tr>
+</tbody>
+</table>
+<h3>大额合同穿行测试</h3>
+<table>
+<thead><tr><th>合同编号</th><th>供应商</th><th>合同内容</th><th>合同金额</th><th>结算金额</th><th>发票金额</th><th>付款金额</th><th>验收情况</th><th>差异及结论</th></tr></thead>
+<tbody>
+<tr><td contenteditable="true">JG-2022-036</td><td contenteditable="true">某建设集团</td><td contenteditable="true">住宅主体建安</td><td contenteditable="true">15,800</td><td contenteditable="true">15,620</td><td contenteditable="true">15,620</td><td contenteditable="true">15,400</td><td contenteditable="true">已验收</td><td contenteditable="true">差异220万元为质保金，资料完整</td></tr>
+<tr><td contenteditable="true">SP-2023-012</td><td contenteditable="true">某装饰工程公司</td><td contenteditable="true">商铺公共区域装修</td><td contenteditable="true">2,300</td><td contenteditable="true">2,180</td><td contenteditable="true">2,180</td><td contenteditable="true">2,180</td><td contenteditable="true">已验收</td><td contenteditable="true">无异常</td></tr>
+</tbody>
+</table>
+</section>
+<section class="print-break" id="wp05">
+<h2>WP-05 共同成本费用分摊表</h2>
+<div class="note warning">分摊方法应体现受益关系并保持一致。常见基础包括可售建筑面积、总建筑面积、占地面积、直接成本或销售收入，但须结合当地口径判断。</div>
+<table>
+<thead><tr><th>分摊对象</th><th>分摊基础</th><th>基础数量/金额</th><th>分摊比例</th><th>土地成本</th><th>开发成本</th><th>其他共同成本</th><th>分摊合计</th></tr></thead>
+<tbody>
+<tr><td contenteditable="true">普通住宅</td><td contenteditable="true">可售面积</td><td contenteditable="true">30,000</td><td contenteditable="true">75.00%</td><td contenteditable="true">13,500</td><td contenteditable="true">27,000</td><td contenteditable="true">0</td><td contenteditable="true">40,500</td></tr>
+<tr><td contenteditable="true">非普通住宅</td><td contenteditable="true">可售面积</td><td contenteditable="true">0</td><td contenteditable="true">0.00%</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td></tr>
+<tr><td contenteditable="true">商铺/办公</td><td contenteditable="true">可售面积</td><td contenteditable="true">10,000</td><td contenteditable="true">25.00%</td><td contenteditable="true">4,500</td><td contenteditable="true">9,000</td><td contenteditable="true">0</td><td contenteditable="true">13,500</td></tr>
+<tr><td contenteditable="true">车位/其他</td><td contenteditable="true">并入受益对象</td><td contenteditable="true">0</td><td contenteditable="true">0.00%</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td></tr>
+<tr><td>合计</td><td></td><td contenteditable="true">40,000</td><td contenteditable="true">100%</td><td contenteditable="true">18,000</td><td contenteditable="true">36,000</td><td contenteditable="true">0</td><td contenteditable="true">54,000</td></tr>
+</tbody>
+</table>
+<h3>分摊方法合理性说明</h3>
+<table>
+<tr><th>选择的分摊方法</th><td contenteditable="true">可售建筑面积法</td></tr>
+<tr><th>选择理由</th><td contenteditable="true">住宅与商铺共同占用土地并共享公共基础设施，缺乏更直接的成本受益计量基础，可售面积能够较稳定反映受益关系。</td></tr>
+<tr><th>与历史年度/其他项目是否一致</th><td contenteditable="true">与企业既往同类项目保持一致。</td></tr>
+<tr><th>变更原因及影响金额</th><td contenteditable="true">无变更。</td></tr>
+<tr><th>复核结论</th><td contenteditable="true">分摊基础、面积数据和计算比例勾稽一致，未发现选择性分摊。</td></tr>
+</table>
+</section>
+<section class="print-break" id="wp06">
+<h2>WP-06 开发费用及相关税金审核表</h2>
+<h3>开发费用计算</h3>
+<table>
+<thead><tr><th>房地产类型</th><th>土地成本</th><th>开发成本</th><th>利息能否准确分摊</th><th>利息支出</th><th>费用扣除比例</th><th>开发费用扣除额</th><th>依据/说明</th></tr></thead>
+<tbody>
+<tr><td contenteditable="true">普通住宅</td><td contenteditable="true">13,500</td><td contenteditable="true">27,000</td><td contenteditable="true">否</td><td contenteditable="true">—</td><td contenteditable="true">10%</td><td contenteditable="true">4,050</td><td contenteditable="true">按土地成本与开发成本之和的10%计算</td></tr>
+<tr><td contenteditable="true">非普通住宅</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">—</td><td contenteditable="true">0</td><td contenteditable="true">—</td><td contenteditable="true">0</td><td contenteditable="true">本项目无</td></tr>
+<tr><td contenteditable="true">商铺/办公</td><td contenteditable="true">4,500</td><td contenteditable="true">9,000</td><td contenteditable="true">否</td><td contenteditable="true">—</td><td contenteditable="true">10%</td><td contenteditable="true">1,350</td><td contenteditable="true">按土地成本与开发成本之和的10%计算</td></tr>
+</tbody>
+</table>
+<h3>与转让房地产有关税金</h3>
+<table>
+<thead><tr><th>税费项目</th><th>账面金额</th><th>申报扣除</th><th>核减金额</th><th>核定扣除</th><th>归属类型</th><th>凭证索引</th><th>备注</th></tr></thead>
+<tbody>
+<tr><td>城市维护建设税</td><td contenteditable="true">420</td><td contenteditable="true">420</td><td contenteditable="true">0</td><td contenteditable="true">420</td><td contenteditable="true">住宅294；商铺126</td><td contenteditable="true">A6-01</td><td contenteditable="true"></td></tr>
+<tr><td>教育费附加</td><td contenteditable="true">126</td><td contenteditable="true">126</td><td contenteditable="true">0</td><td contenteditable="true">126</td><td contenteditable="true">住宅88.2；商铺37.8</td><td contenteditable="true">A6-02</td><td contenteditable="true"></td></tr>
+<tr><td>地方教育附加</td><td contenteditable="true">84</td><td contenteditable="true">54</td><td contenteditable="true">30</td><td contenteditable="true">54</td><td contenteditable="true">住宅37.8；商铺16.2</td><td contenteditable="true">A6-03</td><td contenteditable="true">其中30万元与其他项目相关</td></tr>
+<tr><td contenteditable="true">其他允许扣除税费</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">0</td><td contenteditable="true">—</td><td contenteditable="true">—</td><td contenteditable="true"></td></tr>
+</tbody>
+</table>
+</section>
+<section class="print-break" id="wp07">
+<h2>WP-07 土地增值税清算计算表</h2>
+<table>
+<thead><tr><th>计算项目</th><th>普通住宅</th><th>非普通住宅</th><th>商铺/办公</th><th>车位/其他</th><th>合计</th></tr></thead>
+<tbody>
+<tr><td>一、不含增值税转让收入</td><td contenteditable="true">78,000</td><td contenteditable="true">0</td><td contenteditable="true">26,000</td><td contenteditable="true">0</td><td contenteditable="true">104,000</td></tr>
+<tr><td>二、扣除项目金额</td><td contenteditable="true">53,070</td><td contenteditable="true">0</td><td contenteditable="true">17,730</td><td contenteditable="true">0</td><td contenteditable="true">70,800</td></tr>
+<tr><td>1.取得土地使用权支付金额</td><td contenteditable="true">13,500</td><td contenteditable="true">0</td><td contenteditable="true">4,500</td><td contenteditable="true">0</td><td contenteditable="true">18,000</td></tr>
+<tr><td>2.房地产开发成本</td><td contenteditable="true">27,000</td><td contenteditable="true">0</td><td contenteditable="true">9,000</td><td contenteditable="true">0</td><td contenteditable="true">36,000</td></tr>
+<tr><td>3.房地产开发费用</td><td contenteditable="true">4,050</td><td contenteditable="true">0</td><td contenteditable="true">1,350</td><td contenteditable="true">0</td><td contenteditable="true">5,400</td></tr>
+<tr><td>4.与转让房地产有关税金</td><td contenteditable="true">420</td><td contenteditable="true">0</td><td contenteditable="true">180</td><td contenteditable="true">0</td><td contenteditable="true">600</td></tr>
+<tr><td>5.房地产开发企业加计扣除</td><td contenteditable="true">8,100</td><td contenteditable="true">0</td><td contenteditable="true">2,700</td><td contenteditable="true">0</td><td contenteditable="true">10,800</td></tr>
+<tr><td>三、增值额（一－二）</td><td contenteditable="true">24,930</td><td contenteditable="true">0</td><td contenteditable="true">8,270</td><td contenteditable="true">0</td><td contenteditable="true">33,200</td></tr>
+<tr><td>四、增值率（三÷二）</td><td contenteditable="true">46.98%</td><td contenteditable="true">—</td><td contenteditable="true">46.64%</td><td contenteditable="true">—</td><td contenteditable="true">46.89%</td></tr>
+<tr><td>五、适用税率</td><td contenteditable="true">30%</td><td contenteditable="true">—</td><td contenteditable="true">30%</td><td contenteditable="true">—</td><td></td></tr>
+<tr><td>六、速算扣除系数</td><td contenteditable="true">0%</td><td contenteditable="true">—</td><td contenteditable="true">0%</td><td contenteditable="true">—</td><td></td></tr>
+<tr><td>七、应纳土地增值税</td><td contenteditable="true">7,479</td><td contenteditable="true">0</td><td contenteditable="true">2,481</td><td contenteditable="true">0</td><td contenteditable="true">9,960</td></tr>
+<tr><td>八、已预缴土地增值税</td><td colspan="4"></td><td contenteditable="true"></td></tr>
+<tr><td><b>九、应补（退）税额</b></td><td colspan="4"></td><td contenteditable="true"></td></tr>
+</tbody>
+</table>
+<div class="note"><b>勾稽检查：</b>分类收入合计应与WP-02一致；土地成本与WP-03一致；开发成本与WP-04、WP-05一致；税金与WP-06一致；预缴税款应与完税凭证及征管系统记录一致。</div>
+</section>
+<section class="print-break" id="wp08">
+<h2>WP-08 风险事项及复核结论表</h2>
+<table>
+<thead><tr><th>序号</th><th>风险领域</th><th>发现事项</th><th>涉及金额</th><th>税务影响</th><th>证据索引</th><th>处理建议</th><th>责任人</th><th>完成状态</th></tr></thead>
+<tbody>
+<tr><td>1</td><td contenteditable="true">收入完整性</td><td contenteditable="true">抽查合同、网签、发票和收款无重大差异</td><td contenteditable="true">0</td><td contenteditable="true">无调整</td><td contenteditable="true">A8-01</td><td contenteditable="true">保持房号级台账</td><td contenteditable="true">财务经理</td><td contenteditable="true">已完成</td></tr>
+<tr><td>2</td><td contenteditable="true">成本真实性</td><td contenteditable="true">建安成本中300万元缺少有效工程签证</td><td contenteditable="true">300</td><td contenteditable="true">调减扣除项目</td><td contenteditable="true">A8-02</td><td contenteditable="true">补充证据，否则纳税调增</td><td contenteditable="true">工程总监</td><td contenteditable="true">已调整</td></tr>
+<tr><td>3</td><td contenteditable="true">成本归属</td><td contenteditable="true">开发间接费用中200万元属于二期项目</td><td contenteditable="true">200</td><td contenteditable="true">调减扣除项目</td><td contenteditable="true">A8-03</td><td contenteditable="true">转入二期项目核算</td><td contenteditable="true">成本经理</td><td contenteditable="true">已调整</td></tr>
+<tr><td>4</td><td contenteditable="true">成本分摊</td><td contenteditable="true">采用可售面积法，比例计算无异常</td><td contenteditable="true">0</td><td contenteditable="true">无调整</td><td contenteditable="true">A8-04</td><td contenteditable="true">维持现行方法</td><td contenteditable="true">税务经理</td><td contenteditable="true">已完成</td></tr>
+<tr><td>5</td><td contenteditable="true">地方政策适用</td><td contenteditable="true">地方教育附加中30万元不得在本项目扣除</td><td contenteditable="true">30</td><td contenteditable="true">调减扣除项目</td><td contenteditable="true">A8-05</td><td contenteditable="true">按属地现行口径处理</td><td contenteditable="true">税务经理</td><td contenteditable="true">已调整</td></tr>
+</tbody>
+</table>
+<h3>最终复核结论</h3>
+<table>
+<tr><th>清算收入</th><td contenteditable="true">104,000</td><th>扣除项目金额</th><td contenteditable="true">70,800</td></tr>
+<tr><th>增值额</th><td contenteditable="true">33,200</td><th>应纳土地增值税</th><td contenteditable="true">9,960</td></tr>
+<tr><th>已预缴税额</th><td contenteditable="true">6,200</td><th>应补（退）税额</th><td contenteditable="true">3,760</td></tr>
+<tr><th>重大未决事项</th><td colspan="3" contenteditable="true">无重大未决事项。剩余未售住宅600㎡、商铺500㎡纳入清算后尾盘销售管理。</td></tr>
+<tr><th>总体结论</th><td class="sig" colspan="3" contenteditable="true">经复核，项目收入、扣除项目和分类计算数据勾稽一致。普通住宅与商铺增值率均未超过50%，适用30%税率。清算应补缴土地增值税3,760万元。</td></tr>
+</table>
+<div class="grid">
+<div class="card"><b>编制人签字</b><div class="sig" contenteditable="true">张敏　2026-07-20</div></div>
+<div class="card"><b>复核人签字</b><div class="sig" contenteditable="true">李强　2026-07-22</div></div>
+</div>
+</section>
+<footer>土地增值税清算工作底稿模板 · HTML可编辑版</footer>
+</div>
+<script>
+function editableCells(){ return [...document.querySelectorAll('[contenteditable="true"]')]; }
+function saveLocal(){
+  const vals=editableCells().map(x=>x.innerHTML);
+  localStorage.setItem('tdzzs_workpapers',JSON.stringify(vals));
+  document.getElementById('status').textContent='已保存到当前浏览器';
+}
+function loadLocal(){
+  const raw=localStorage.getItem('tdzzs_workpapers');
+  if(!raw){document.getElementById('status').textContent='未找到已保存内容';return;}
+  const vals=JSON.parse(raw); editableCells().forEach((x,i)=>x.innerHTML=vals[i]||'');
+  document.getElementById('status').textContent='已恢复';
+}
+function clearEditable(){
+  if(confirm('确认清空全部可编辑内容？')){
+    editableCells().forEach(x=>x.innerHTML='');
+    document.getElementById('status').textContent='已清空';
+  }
+}
+</script>
+</body>
+</html>
 
